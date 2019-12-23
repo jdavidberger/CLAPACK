@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 project(CLAPACK C)
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 if(WIN32 AND NOT CYGWIN)
   set(SECOND_SRC  ${CLAPACK_SOURCE_DIR}/INSTALL/winsecond.c)
   set(DSECOND_SRC  ${CLAPACK_SOURCE_DIR}/INSTALL/windsecnd.c)
@@ -39,3 +41,6 @@ configure_file(${CLAPACK_SOURCE_DIR}/clapack-config-version.cmake.in
   ${CLAPACK_BINARY_DIR}/clapack-config-version.cmake @ONLY)
 configure_file(${CLAPACK_SOURCE_DIR}/clapack-config.cmake.in
   ${CLAPACK_BINARY_DIR}/clapack-config.cmake @ONLY)
+
+install(DIRECTORY LAPACKE/include/ INCLUDE/ CBLAS/include/ DESTINATION include FILES_MATCHING PATTERN "*.h")
+install(FILES F2CLIBS/libf2c/f2c.h DESTINATION include)

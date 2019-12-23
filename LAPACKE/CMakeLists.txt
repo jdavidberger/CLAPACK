@@ -115,3 +115,4 @@ endif()
 #   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/lapacke-${LAPACK_VERSION}
 #   COMPONENT Development
 #   )
+install(TARGETS lapacke DESTINATION lib)

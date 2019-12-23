@@ -34,15 +34,15 @@ endif()
 # Export cblas targets from the
 # install tree, if any.
 set(_cblas_config_install_guard_target "")
-if(ALL_TARGETS)
-  install(TARGETS cblas
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cblas-${LAPACK_VERSION}
-    COMPONENT Development
-    )
-  # Choose one of the cblas targets to use as a guard for
-  # cblas-config.cmake to load targets from the install tree.
-  list(GET ALL_TARGETS 0 _cblas_config_install_guard_target)
-endif()
+# if(ALL_TARGETS)
+#   install(TARGETS cblas
+#     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cblas-${LAPACK_VERSION}
+#     COMPONENT Development
+#     )
+#   # Choose one of the cblas targets to use as a guard for
+#   # cblas-config.cmake to load targets from the install tree.
+#   list(GET ALL_TARGETS 0 _cblas_config_install_guard_target)
+# endif()
 
 # Export cblas targets from the build tree, if any.
 set(_cblas_config_build_guard_target "")
