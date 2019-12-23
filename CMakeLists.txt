@@ -19,6 +19,8 @@ include_directories(${CLAPACK_SOURCE_DIR}/INCLUDE)
 add_subdirectory(F2CLIBS)
 add_subdirectory(BLAS)
 add_subdirectory(SRC)
+add_subdirectory(LAPACKE)
+
 if( BUILD_TESTING )
   enable_testing()
   include(CTest)
