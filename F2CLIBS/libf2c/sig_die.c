@@ -28,7 +28,7 @@ void sig_die(const char *s, int kill)
 	if(kill)
 		{
 		fflush(stderr);
-		f_exit();
+		//		f_exit();
 		fflush(stderr);
 		/* now get a core */
 #ifdef SIGIOT

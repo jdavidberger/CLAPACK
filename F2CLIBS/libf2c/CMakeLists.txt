@@ -1,5 +1,6 @@
 set(MISC 
-  f77vers.c i77vers.c main.c s_rnge.c abort_.c exit_.c getarg_.c iargc_.c
+  f77vers.c i77vers.c main.c s_rnge.c abort_.c exit_.c
+  getarg_.c iargc_.c
   getenv_.c signal_.c s_stop.c s_paus.c system_.c cabs.c ctype.c
   derf_.c derfc_.c erf_.c erfc_.c sig_die.c uninit.c)
 set(POW pow_ci.c pow_dd.c pow_di.c pow_hh.c pow_ii.c pow_ri.c pow_zi.c pow_zz.c)
@@ -21,10 +22,15 @@ set(HALF h_abs.c h_dim.c h_dnnt.c h_indx.c h_len.c h_mod.c h_nint.c h_sign.c)
 set(CMP l_ge.c l_gt.c l_le.c l_lt.c hl_ge.c hl_gt.c hl_le.c hl_lt.c)
 set(EFL	ef1asc_.c ef1cmc_.c)
 set(CHAR f77_aloc.c s_cat.c s_cmp.c s_copy.c)
-set(I77 backspac.c close.c dfe.c dolio.c due.c endfile.c err.c
+set(I77 backspac.c # close.c
+  dfe.c dolio.c due.c #endfile.c
+  err.c
   fmt.c fmtlib.c ftell_.c iio.c ilnw.c inquire.c lread.c lwrite.c
-  open.c rdfmt.c rewind.c rsfe.c rsli.c rsne.c sfe.c sue.c
-  typesize.c uio.c util.c wref.c wrtfmt.c wsfe.c wsle.c wsne.c xwsne.c)
+  #open.c
+  rdfmt.c rewind.c rsfe.c rsli.c rsne.c #sfe.c
+  sue.c
+  typesize.c uio.c util.c wref.c wrtfmt.c #wsfe.c
+  wsle.c wsne.c xwsne.c stubs.c)
 set(QINT pow_qq.c qbitbits.c qbitshft.c ftell64_.c)
 set(TIME dtime_.c etime_.c)
 
