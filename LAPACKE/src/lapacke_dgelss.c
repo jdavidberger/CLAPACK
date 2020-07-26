@@ -68,7 +68,7 @@ lapack_int LAPACKE_dgelss( int matrix_layout, lapack_int m, lapack_int n,
     }
     lwork = (lapack_int)work_query;
     /* Allocate memory for work arrays */
-    work = (double*)LAPACKE_malloc( sizeof(double) * lwork );
+    work = (double*)alloca( sizeof(double) * lwork );
     if( work == NULL ) {
         info = LAPACK_WORK_MEMORY_ERROR;
         goto exit_level_0;
@@ -77,7 +77,7 @@ lapack_int LAPACKE_dgelss( int matrix_layout, lapack_int m, lapack_int n,
     info = LAPACKE_dgelss_work( matrix_layout, m, n, nrhs, a, lda, b, ldb, s,
                                 rcond, rank, work, lwork );
     /* Release memory and exit */
-    LAPACKE_free( work );
+    //LAPACKE_free( work );
 exit_level_0:
     if( info == LAPACK_WORK_MEMORY_ERROR ) {
         LAPACKE_xerbla( "LAPACKE_dgelss", info );

@@ -3,7 +3,7 @@
 #include "string.h"
 #ifdef NON_UNIX_STDIO
 #ifndef MSDOS
-#include "unistd.h" /* for access() */
+//#include "unistd.h" /* for access() */
 #endif
 #endif
 #ifdef KR_headers

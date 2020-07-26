@@ -63,7 +63,7 @@ lapack_int LAPACKE_dgesvd( int matrix_layout, char jobu, char jobvt,
     }
     lwork = (lapack_int)work_query;
     /* Allocate memory for work arrays */
-    work = (double*)LAPACKE_malloc( sizeof(double) * lwork );
+    work = (double*)alloca( sizeof(double) * lwork );
     if( work == NULL ) {
         info = LAPACK_WORK_MEMORY_ERROR;
         goto exit_level_0;
@@ -76,7 +76,7 @@ lapack_int LAPACKE_dgesvd( int matrix_layout, char jobu, char jobvt,
         superb[i] = work[i+1];
     }
     /* Release memory and exit */
-    LAPACKE_free( work );
+    //LAPACKE_free( work );
 exit_level_0:
     if( info == LAPACK_WORK_MEMORY_ERROR ) {
         LAPACKE_xerbla( "LAPACKE_dgesvd", info );

@@ -32,7 +32,7 @@ set(I77 backspac.c # close.c
   typesize.c uio.c util.c wref.c wrtfmt.c #wsfe.c
   wsle.c wsne.c xwsne.c stubs.c)
 set(QINT pow_qq.c qbitbits.c qbitshft.c ftell64_.c)
-set(TIME dtime_.c etime_.c)
+# set(TIME dtime_.c etime_.c)
 
 # If you get an error compiling dtime_.c or etime_.c, try adding
 # -DUSE_CLOCK to the CFLAGS assignment above; if that does not work,

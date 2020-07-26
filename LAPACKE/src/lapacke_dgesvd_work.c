@@ -83,14 +83,14 @@ lapack_int LAPACKE_dgesvd_work( int matrix_layout, char jobu, char jobvt,
             return (info < 0) ? (info - 1) : info;
         }
         /* Allocate memory for temporary array(s) */
-        a_t = (double*)LAPACKE_malloc( sizeof(double) * lda_t * MAX(1,n) );
+        a_t = (double*)alloca( sizeof(double) * lda_t * MAX(1,n) );
         if( a_t == NULL ) {
             info = LAPACK_TRANSPOSE_MEMORY_ERROR;
             goto exit_level_0;
         }
         if( LAPACKE_lsame( jobu, 'a' ) || LAPACKE_lsame( jobu, 's' ) ) {
             u_t = (double*)
-                LAPACKE_malloc( sizeof(double) * ldu_t * MAX(1,ncols_u) );
+                alloca( sizeof(double) * ldu_t * MAX(1,ncols_u) );
             if( u_t == NULL ) {
                 info = LAPACK_TRANSPOSE_MEMORY_ERROR;
                 goto exit_level_1;
@@ -98,7 +98,7 @@ lapack_int LAPACKE_dgesvd_work( int matrix_layout, char jobu, char jobvt,
         }
         if( LAPACKE_lsame( jobvt, 'a' ) || LAPACKE_lsame( jobvt, 's' ) ) {
             vt_t = (double*)
-                LAPACKE_malloc( sizeof(double) * ldvt_t * MAX(1,n) );
+                alloca( sizeof(double) * ldvt_t * MAX(1,n) );
             if( vt_t == NULL ) {
                 info = LAPACK_TRANSPOSE_MEMORY_ERROR;
                 goto exit_level_2;
@@ -124,14 +124,14 @@ lapack_int LAPACKE_dgesvd_work( int matrix_layout, char jobu, char jobvt,
         }
         /* Release memory and exit */
         if( LAPACKE_lsame( jobvt, 'a' ) || LAPACKE_lsame( jobvt, 's' ) ) {
-            LAPACKE_free( vt_t );
+            //LAPACKE_free( vt_t );
         }
 exit_level_2:
         if( LAPACKE_lsame( jobu, 'a' ) || LAPACKE_lsame( jobu, 's' ) ) {
-            LAPACKE_free( u_t );
+            //LAPACKE_free( u_t );
         }
 exit_level_1:
-        LAPACKE_free( a_t );
+        //LAPACKE_free( a_t );
 exit_level_0:
         if( info == LAPACK_TRANSPOSE_MEMORY_ERROR ) {
             LAPACKE_xerbla( "LAPACKE_dgesvd_work", info );

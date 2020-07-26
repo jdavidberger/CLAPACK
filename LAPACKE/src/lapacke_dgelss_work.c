@@ -70,12 +70,12 @@ lapack_int LAPACKE_dgelss_work( int matrix_layout, lapack_int m, lapack_int n,
             return (info < 0) ? (info - 1) : info;
         }
         /* Allocate memory for temporary array(s) */
-        a_t = (double*)LAPACKE_malloc( sizeof(double) * lda_t * MAX(1,n) );
+        a_t = (double*)alloca( sizeof(double) * lda_t * MAX(1,n) );
         if( a_t == NULL ) {
             info = LAPACK_TRANSPOSE_MEMORY_ERROR;
             goto exit_level_0;
         }
-        b_t = (double*)LAPACKE_malloc( sizeof(double) * ldb_t * MAX(1,nrhs) );
+        b_t = (double*)alloca( sizeof(double) * ldb_t * MAX(1,nrhs) );
         if( b_t == NULL ) {
             info = LAPACK_TRANSPOSE_MEMORY_ERROR;
             goto exit_level_1;
@@ -94,9 +94,9 @@ lapack_int LAPACKE_dgelss_work( int matrix_layout, lapack_int m, lapack_int n,
         LAPACKE_dge_trans( LAPACK_COL_MAJOR, MAX(m,n), nrhs, b_t, ldb_t, b,
                            ldb );
         /* Release memory and exit */
-        LAPACKE_free( b_t );
+        //LAPACKE_free( b_t );
 exit_level_1:
-        LAPACKE_free( a_t );
+        //LAPACKE_free( a_t );
 exit_level_0:
         if( info == LAPACK_TRANSPOSE_MEMORY_ERROR ) {
             LAPACKE_xerbla( "LAPACKE_dgelss_work", info );
