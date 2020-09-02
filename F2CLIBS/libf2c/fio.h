@@ -1,6 +1,7 @@
 #ifndef SYSDEP_H_INCLUDED
 #include "sysdep1.h"
 #endif
+
 #include "stdio.h"
 #include "errno.h"
 #ifndef NULL
@@ -122,6 +123,10 @@ extern unit f__units[];
 /*Table sizes*/
 #define MXUNIT 100
 
+#ifdef ANDROID
+#define __off64_t off64_t
+#endif
+  
 extern int f__recpos;	/*position in current record*/
 extern OFF_T f__cursor;	/* offset to move to */
 extern OFF_T f__hiwater;	/* so TL doesn't confuse us */

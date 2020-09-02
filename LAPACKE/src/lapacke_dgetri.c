@@ -60,7 +60,7 @@ lapack_int LAPACKE_dgetri( int matrix_layout, lapack_int n, double* a,
     }
     lwork = (lapack_int)work_query;
     /* Allocate memory for work arrays */
-    work = (double*)LAPACKE_malloc( sizeof(double) * lwork );
+    work = (double*)alloca( sizeof(double) * lwork );
     if( work == NULL ) {
         info = LAPACK_WORK_MEMORY_ERROR;
         goto exit_level_0;
@@ -68,7 +68,7 @@ lapack_int LAPACKE_dgetri( int matrix_layout, lapack_int n, double* a,
     /* Call middle-level interface */
     info = LAPACKE_dgetri_work( matrix_layout, n, a, lda, ipiv, work, lwork );
     /* Release memory and exit */
-    LAPACKE_free( work );
+    //    LAPACKE_free( work );
 exit_level_0:
     if( info == LAPACK_WORK_MEMORY_ERROR ) {
         LAPACKE_xerbla( "LAPACKE_dgetri", info );

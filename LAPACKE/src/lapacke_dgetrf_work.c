@@ -53,7 +53,7 @@ lapack_int LAPACKE_dgetrf_work( int matrix_layout, lapack_int m, lapack_int n,
             return info;
         }
         /* Allocate memory for temporary array(s) */
-        a_t = (double*)LAPACKE_malloc( sizeof(double) * lda_t * MAX(1,n) );
+        a_t = (double*)alloca( sizeof(double) * lda_t * MAX(1,n) );
         if( a_t == NULL ) {
             info = LAPACK_TRANSPOSE_MEMORY_ERROR;
             goto exit_level_0;
@@ -68,7 +68,7 @@ lapack_int LAPACKE_dgetrf_work( int matrix_layout, lapack_int m, lapack_int n,
         /* Transpose output matrices */
         LAPACKE_dge_trans( LAPACK_COL_MAJOR, m, n, a_t, lda_t, a, lda );
         /* Release memory and exit */
-        LAPACKE_free( a_t );
+        //LAPACKE_free( a_t );
 exit_level_0:
         if( info == LAPACK_TRANSPOSE_MEMORY_ERROR ) {
             LAPACKE_xerbla( "LAPACKE_dgetrf_work", info );

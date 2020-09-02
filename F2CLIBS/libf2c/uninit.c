@@ -233,7 +233,8 @@ ieee0(Void)
 
 #ifdef __linux__
 #define IEEE0_done
-#include "fpu_control.h"
+//#include "fpu_control.h"
+#include <fenv.h>
 
 #ifdef __alpha__
 #ifndef USE_setfpucw
